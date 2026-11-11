@@ -86,3 +86,25 @@
 (newline)
 (ordered? `(1))
 (newline)
+
+; Question 5
+(define (last-word-e? word) (equal? (last word) `e))
+
+(define (ends-e-word word)
+    (cond
+        ((last-word-e? word) word)
+        (else `())
+    )
+)
+
+(define (ends-e sentence)
+    (cond
+        ((<= (count sentence) 1) (ends-e-word sentence))
+        (else (se
+            (ends-e-word (first sentence))
+            (ends-e (bf sentence))
+        ))
+    )
+)
+
+(displayln (ends-e '(please put the salami above the blue elephant)))
